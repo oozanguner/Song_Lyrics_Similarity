@@ -1,4 +1,4 @@
-# YouTube Song Finder
+# Song Finder
 
 This project aims to identify the **exact** or **most similar** song based on the lyrics transcribed from a given YouTube URL. It leverages multiple technologies for audio downloading, transcription, vector embedding, and similarity search.
 
