@@ -3,6 +3,12 @@ from transformers import pipeline, AutoModelForSpeechSeq2Seq, AutoProcessor
 import torch
 from .vectordatabases import *
 from .find_similarity import *
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+HFACE_TOKEN = os.getenv('HFACE_TOKEN')
 
 class ExtractYoutubeAudio:
     def __init__(self, url):
@@ -30,9 +36,9 @@ class AudioToText:
         self.url = url
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
         device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-        model = AutoModelForSpeechSeq2Seq.from_pretrained(audio_model_name, torch_dtype=torch_dtype, low_cpu_mem_usage=True)
+        model = AutoModelForSpeechSeq2Seq.from_pretrained(audio_model_name, torch_dtype=torch_dtype, low_cpu_mem_usage=True, token=HFACE_TOKEN)
         model.to(device)
-        processor = AutoProcessor.from_pretrained(audio_model_name)
+        processor = AutoProcessor.from_pretrained(audio_model_name, token=HFACE_TOKEN)
         self.whisper = pipeline('automatic-speech-recognition',
                                 model=model,
                                 tokenizer=processor.tokenizer,
