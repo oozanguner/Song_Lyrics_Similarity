@@ -71,3 +71,7 @@ This project aims to identify the **exact** or **most similar** song based on th
 - Only the top 1,000 viewed songs were used in constructing the FAISS vector database to keep the scope manageable.
 
 > **Note**: This project was created as an inspiration from a technical assessment process, showcasing end-to-end integration of various AI and web technologies.
+
+![Get Title of the Song](get_title.png)
+![Get Lyrics of the Song](get_lyrics.png)
+![Find the Same Song or the Most Similar Songs](find_similarity.png)
